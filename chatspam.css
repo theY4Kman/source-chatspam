@@ -1,5 +1,6 @@
 #left,
 #right {
+  height: 100%;
   width: 48%;
 }
 
@@ -16,6 +17,21 @@
 }
 
 #right > textarea {
+  min-height: 400px;
   height: 100%;
   width: 100%;
+}
+
+
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
 }
