@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Source Game Chatspam Config Generator</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="chatspam.js"></script>
+    <link rel="stylesheet" href="chatspam.css"/>
+  </head>
+  <body>
+    <h1>Source Game Chatspam Config Generator</h1>
+    <p>The purpose of this tool is to take a list of messages and generate the configuration files for a chatspam button (a single button which, when pressed, sends a message from your list at "random").</p>
+    <p>Instructions: type your first message in the box marked "message 1" below. Press enter when complete. Type your next message. Press enter. And so on, ad infinitum, until your imagination fucks off. Then, in the box on the top of the right side, enter the name of the key you'd like to bind the spam to (see <a href="http://dota2.gamepedia.com/Bindable_keys">this list</a> for examples &mdash; you'll want the Scripting Name). Then, press the "Generate" button. On the right side, your configuration file will appear. Copy that shit, throw it in the same directory as your autoexec.cfg (e.g. Steam\SteamApps\common\Counter-Strike Global Offensive\config. It's okay to create autoexec.cfg if it doesn't exist), and place a line at the end of your autoexec.cfg with "exec the-config-file-i-just-saved.cfg". And Enjoy!</p>
+    <section id="tool" ng-controller="ChatspamController" ng-app="chatspam">
+      <div id="left" messages>
+        <input message type="text" placeholder="message {{ $index + 1 }}" ng-repeat="item in items" ng-model="item.message" item="item" index="$index" />
+        <input type="button" value="Generate" ng-click="generate()"/>
+      </div>
+      <div id="right">
+        <input type="text" placeholder="bind key" ng-model="bind"/>
+        <textarea id="config">{{ config }}</textarea>
+      </div>
+    </section>
+  </body>
+</html>

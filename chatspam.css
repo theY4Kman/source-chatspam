@@ -1,0 +1,21 @@
+#left,
+#right {
+  width: 48%;
+}
+
+#left {
+  float: left;
+}
+
+#left > input {
+  width: 100%;
+}
+
+#right {
+  float: right;
+}
+
+#right > textarea {
+  height: 100%;
+  width: 100%;
+}
